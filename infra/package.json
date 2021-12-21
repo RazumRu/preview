@@ -1,0 +1,12 @@
+{
+  "name": "@passed-way/infra",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deps:up": "docker-compose -f ./docker/docker-compose.yml up --build -d",
+    "deps:stop": "docker-compose -f ./docker/docker-compose.yml stop"
+  },
+  "author": "Sergey Razumovsky",
+  "license": "UNLECENSE"
+}

@@ -1,0 +1,85 @@
+http:
+  services:
+    web-service:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:3000/"
+    jewelry-service:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:5000/"
+    users-service:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:5001/"
+    files-service:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:5002/"
+
+  routers:
+    web-routers:
+      rule: "PathPrefix(`/`)"
+      service: web-service
+      entryPoints:
+        - web
+    jewelry-routers:
+      rule: "PathPrefix(`/api/jewelry/`)"
+      service: jewelry-service
+      entryPoints:
+        - web
+      middlewares:
+        - strip-first-prefix
+    users-routers:
+      rule: "PathPrefix(`/api/users/`)"
+      service: users-service
+      entryPoints:
+        - web
+      middlewares:
+        - strip-first-prefix
+    files-routers:
+      rule: "PathPrefix(`/api/files/`)"
+      service: files-service
+      entryPoints:
+        - web
+      middlewares:
+        - strip-first-prefix
+
+  middlewares:
+    strip-first-prefix:
+      stripPrefixRegex:
+        regex:
+          # - "^/api/[^/]+/"
+          - "^/api/"
+    auth:
+      basicauth:
+        users:
+          # https://doc.traefik.io/traefik/middlewares/basicauth/
+          # echo $(htpasswd -nb name key) | sed -e s/\\$/\\$\\$/g
+          # thebestotrteam
+          - name:$apr1$t/fkbBll$Q7K2SDNo4ed02gVkzz8vE1
+    disable-cache:
+      headers:
+        customResponseHeaders:
+          Cache-Control: no-store
+    cors:
+      headers:
+        accessControlAllowMethods: ["GET", "OPTIONS", "POST", "PUT", "DELETE", "HEAD", "PATCH"]
+        accessControlAllowHeaders:
+          - DNT
+          - User-Agent
+          - X-Requested-With
+          - If-Modified-Since
+          - Cache-Control
+          - Content-Type
+          - Range
+          - x-user-login
+        accessControlExposeHeaders:
+          - Content-Length
+          - Content-Range
+          - Cache-Control
+          - x-response-time
+        accessControlAllowOriginList:
+          - "*"
+        accessControlMaxAge: 3600
+        addVaryHeader: true

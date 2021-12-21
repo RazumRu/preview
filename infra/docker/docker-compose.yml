@@ -1,0 +1,81 @@
+version: '3.6'
+
+networks:
+  passed-way:
+    external: true
+
+volumes:
+  mongo:
+  redis:
+  minio:
+
+services:
+  passed_way_traefik:
+    image: traefik:v2.4
+    container_name: passed_way_traefik
+    ports:
+      - "80:80" # Web / gRPC
+      - "443:443" # Web / gRPC
+      - "8086:8082" # Traefik admin
+      - "27017:27017" # Mongo
+      - "6379:6379" # Redis
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik/local:/etc/traefik
+    networks:
+      - passed-way
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.api.service=api@internal"
+      - "traefik.http.routers.api.entrypoints=traefik"
+      - "traefik.http.routers.api.rule=PathPrefix(`/`)"
+      # - "traefik.http.routers.api.middlewares=auth@file"
+
+  passed_way_minio:
+    image: minio/minio
+    container_name: passed_way_minio
+    environment:
+      - MINIO_ROOT_USER=localAccess
+      - MINIO_ROOT_PASSWORD=localSecret
+    networks:
+      - passed-way
+    volumes:
+      - minio:/data
+      - minio:/root/.minio
+    command: server  --console-address ":9001" /data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.minio.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.minio.entrypoints=minio"
+    ports:
+      - "9012:9001"
+      - "9011:9000"
+
+  passed_way_mongo:
+    image: mongo:4.4.5-bionic
+    container_name: passed_way_mongo
+    environment:
+      # - MONGO_INITDB_DATABASE=passed-way
+      - MONGO_INITDB_ROOT_USERNAME=passed_way
+      - MONGO_INITDB_ROOT_PASSWORD=12345678
+    networks:
+      - passed-way
+    volumes:
+      - ./mongo/entrypoint:/docker-entrypoint-initdb.d
+    labels:
+      - "traefik.enable=true"
+      - "traefik.tcp.routers.mongo.rule=HostSNI(`*`)"
+      - "traefik.tcp.routers.mongo.entrypoints=mongo"
+
+  passed_way_redis:
+    image: redis:5-alpine
+    container_name: passed_way_redis
+    command: redis-server --requirepass 12345678
+    volumes:
+      - redis:/data/cache
+    networks:
+      - passed-way
+    labels:
+      - "traefik.enable=true"
+      - "traefik.tcp.routers.redis.rule=HostSNI(`*`)"
+      - "traefik.tcp.routers.redis.entrypoints=redis"

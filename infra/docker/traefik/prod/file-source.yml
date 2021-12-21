@@ -1,0 +1,85 @@
+http:
+  services:
+    web-service:
+      loadBalancer:
+        servers:
+          - url: "http://web_service:5006/"
+    jewelry-service:
+      loadBalancer:
+        servers:
+          - url: "http://jewelry_service:5000/"
+    users-service:
+      loadBalancer:
+        servers:
+          - url: "http://users_service:5000/"
+    files-service:
+      loadBalancer:
+        servers:
+          - url: "http://files_service:5000/"
+
+  routers:
+    web-routers:
+      rule: "Host(`example.ru`)"
+      service: web-service
+      tls:
+        certresolver: letsencrypt
+      entryPoints:
+        - websecure
+    jewelry-routers:
+      rule: "Host(`api.example.ru`) && PathPrefix(`/jewelry`)"
+      service: jewelry-service
+      tls:
+        certresolver: letsencrypt
+      entryPoints:
+        - websecure
+      middlewares:
+        - strip-first-prefix
+    users-routers:
+      rule: "Host(`api.example.ru`) && PathPrefix(`/users`)"
+      service: users-service
+      tls:
+        certresolver: letsencrypt
+      entryPoints:
+        - websecure
+      middlewares:
+        - strip-first-prefix
+    files-routers:
+      rule: "Host(`api.example.ru`) && PathPrefix(`/files`)"
+      service: files-service
+      tls:
+        certresolver: letsencrypt
+      entryPoints:
+        - websecure
+      middlewares:
+        - strip-first-prefix
+
+  middlewares:
+    strip-first-prefix:
+      stripPrefixRegex:
+        regex:
+          - "^/[^/]+/"
+    disable-cache:
+      headers:
+        customResponseHeaders:
+          Cache-Control: no-store
+    cors:
+      headers:
+        accessControlAllowMethods: ["GET", "OPTIONS", "POST", "PUT", "DELETE", "HEAD", "PATCH"]
+        accessControlAllowHeaders:
+          - DNT
+          - User-Agent
+          - X-Requested-With
+          - If-Modified-Since
+          - Cache-Control
+          - Content-Type
+          - Range
+          - x-user-login
+        accessControlExposeHeaders:
+          - Content-Length
+          - Content-Range
+          - Cache-Control
+          - x-response-time
+        accessControlAllowOriginList:
+          - "*"
+        accessControlMaxAge: 3600
+        addVaryHeader: true

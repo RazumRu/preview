@@ -1,0 +1,46 @@
+version: '1.0'
+stages:
+  - clone
+  - build
+  - test
+
+steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+    revision: '${{CF_REVISION}}'
+    stage: clone
+
+  install:
+    image: node:16.13.0
+    working_directory: ${{main_clone}}
+    description: Run linters...
+    stage: build
+    commands:
+      - yarn install
+
+  lint:
+    image: node:16.13.0
+    working_directory: ${{main_clone}}
+    description: Run linters...
+    stage: build
+    commands:
+      - yarn global add eslint
+      - eslint "apps/$APP_NAME/{src,test}/**/*.ts"
+
+  build:
+    image: node:16.13.0
+    working_directory: ${{main_clone}}
+    description: Run build...
+    stage: build
+    commands:
+      - yarn build $APP_NAME
+
+  unit_tests:
+    image: node:16.13.0
+    working_directory: ${{main_clone}}
+    description: Run unit tests...
+    stage: test
+    commands:
+      - yarn test --testPathPattern=apps/$APP_NAME

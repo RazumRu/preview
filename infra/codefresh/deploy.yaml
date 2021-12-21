@@ -1,0 +1,40 @@
+version: '1.0'
+stages:
+  - clone
+  - push
+  - deploy
+
+steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+    revision: '${{CF_REVISION}}'
+    stage: clone
+
+  build_dockerfile:
+    type: build
+    stage: push
+    title: Build dockerfile...
+    working_directory: ${{main_clone}}
+    dockerfile: Dockerfile
+    image_name: ${{YANDEX_REGISTRY_ID}}/passed-way-${{APP_NAME}}-${{NODE_ENV}}
+    # tag: ${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}
+    tag: latest
+    registry: passed-way
+    build_arguments:
+      - APP_NAME=${{APP_NAME}}
+
+  deploy:
+    title: "Deploy on server"
+    type: "freestyle"
+    stage: deploy
+    image: "praqma/network-multitool"
+    commands:
+      - apk add openssh
+      - mkdir /root/.ssh
+      - echo ${{SSH_KEY}} | base64 -d > /root/.ssh/id_rsa ## Value of ${{SSH_KEY}} is base64 encoded
+      - chmod 600 ~/.ssh/id_rsa
+      - eval $(ssh-agent -s)
+      - ssh-add ~/.ssh/id_rsa
+      - ssh -o "StrictHostKeyChecking no" ${{SSH_USER}}@${{SSH_HOST}} 'cd ./prod/pw-infra && ./start-prod'

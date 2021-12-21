@@ -1,0 +1,40 @@
+entryPoints:
+  web:
+    address: ":80"
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+    forwardedHeaders:
+      insecure: true
+  websecure:
+    address: ":443"
+    forwardedHeaders:
+      insecure: true
+
+traefikLog:
+  logLevel: INFO
+accessLog: {}
+
+serversTransport:
+  forwardingTimeouts:
+    idleConnTimeout: 300s
+
+providers:
+  docker:
+    exposedbydefault: false
+    swarmmode: false
+  file:
+    filename: /etc/traefik/file-source.yml
+
+api:
+  dashboard: false
+  insecure: false
+
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: example@gmail.com
+      storage: /acme_data/acme.json
+      httpChallenge:
+        entryPoint: web

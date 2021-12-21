@@ -1,0 +1,65 @@
+version: '3.6'
+
+networks:
+  passed-way:
+    external: true
+
+volumes:
+  redis:
+  acme_data:
+    external: true
+
+services:
+  passed_way_traefik_prod:
+    image: traefik:v2.4
+    container_name: passed_way_traefik_prod
+    ports:
+      - "80:80" # Web / gRPC
+      - "443:443" # Web / gRPC
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik/prod:/etc/traefik
+      - acme_data:/acme_data/
+    networks:
+      - passed-way
+    labels:
+      - "traefik.enable=true"
+
+  passed_way_redis_prod:
+    image: redis:5-alpine
+    container_name: passed_way_redis_prod
+    command: redis-server --requirepass 12345678
+    volumes:
+      - redis:/data/cache
+    networks:
+      - passed-way
+
+  users_service:
+    container_name: users_service
+    image: cr.yandex/example/passed-way-users-production:latest
+    networks:
+      - passed-way
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+
+  files_service:
+    container_name: files_service
+    image: cr.yandex/example/passed-way-files-production:latest
+    networks:
+      - passed-way
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+
+  jewelry_service:
+    container_name: jewelry_service
+    image: cr.yandex/example/passed-way-jewelry-production:latest
+    networks:
+      - passed-way
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
