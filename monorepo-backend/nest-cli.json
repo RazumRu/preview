@@ -1,0 +1,125 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/jewelry",
+  "monorepo": true,
+  "entryFile": "src/main",
+  "root": "apps/jewelry",
+  "compilerOptions": {
+    "plugins": [
+      "@nestjs/swagger"
+    ],
+    "webpack": true,
+    "tsConfigPath": "apps/jewelry/tsconfig.app.json",
+    "assets": [
+      {
+        "include": "**/.env*",
+        "watchAssets": true,
+        "outDir": "dist/apps/jewelry"
+      }
+    ]
+  },
+  "projects": {
+    "jewelry": {
+      "type": "application",
+      "root": "apps/jewelry",
+      "entryFile": "src/main",
+      "sourceRoot": "apps/jewelry",
+      "compilerOptions": {
+        "plugins": [
+          "@nestjs/swagger"
+        ],
+        "tsConfigPath": "apps/jewelry/tsconfig.app.json",
+        "assets": [
+          {
+            "include": "**/.env*",
+            "watchAssets": true,
+            "outDir": "dist/apps/jewelry"
+          }
+        ]
+      }
+    },
+    "users": {
+      "type": "application",
+      "root": "apps/users",
+      "entryFile": "src/main",
+      "sourceRoot": "apps/users",
+      "compilerOptions": {
+        "plugins": [
+          "@nestjs/swagger"
+        ],
+        "tsConfigPath": "apps/users/tsconfig.app.json",
+        "assets": [
+          {
+            "include": "**/.env*",
+            "watchAssets": true,
+            "outDir": "dist/apps/users"
+          }
+        ]
+      }
+    },
+    "files": {
+      "type": "application",
+      "root": "apps/files",
+      "entryFile": "src/main",
+      "sourceRoot": "apps/files",
+      "compilerOptions": {
+        "plugins": [
+          "@nestjs/swagger"
+        ],
+        "tsConfigPath": "apps/files/tsconfig.app.json",
+        "assets": [
+          {
+            "include": "**/.env*",
+            "watchAssets": true,
+            "outDir": "dist/apps/files"
+          }
+        ]
+      }
+    },
+    "error": {
+      "type": "library",
+      "root": "libs/error",
+      "entryFile": "index",
+      "sourceRoot": "libs/error/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/error/tsconfig.lib.json"
+      }
+    },
+    "logger": {
+      "type": "library",
+      "root": "libs/logger",
+      "entryFile": "index",
+      "sourceRoot": "libs/logger/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/logger/tsconfig.lib.json"
+      }
+    },
+    "app-bootstrapper": {
+      "type": "library",
+      "root": "libs/app-bootstrapper",
+      "entryFile": "index",
+      "sourceRoot": "libs/app-bootstrapper/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/app-bootstrapper/tsconfig.lib.json"
+      }
+    },
+    "health-checker": {
+      "type": "library",
+      "root": "libs/health-checker",
+      "entryFile": "index",
+      "sourceRoot": "libs/health-checker/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/health-checker/tsconfig.lib.json"
+      }
+    },
+    "auth-helper": {
+      "type": "library",
+      "root": "libs/auth-helper",
+      "entryFile": "index",
+      "sourceRoot": "libs/auth-helper/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/auth-helper/tsconfig.lib.json"
+      }
+    }
+  }
+}

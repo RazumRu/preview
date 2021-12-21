@@ -1,0 +1,9 @@
+{
+  "baseUrl": "http://localhost/api/files",
+  "testFiles": "**.spec.ts",
+  "video": false,
+  "screenshotOnRunFailure": false,
+  "env": {
+
+  }
+}

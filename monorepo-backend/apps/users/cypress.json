@@ -1,0 +1,10 @@
+{
+  "baseUrl": "http://localhost/api/users",
+  "testFiles": "**.spec.ts",
+  "video": false,
+  "screenshotOnRunFailure": false,
+  "env": {
+    "USER_EMAIL": "local-pw-user@gmail.com",
+    "USER_PASS": "12345678"
+  }
+}

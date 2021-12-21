@@ -1,0 +1,125 @@
+{
+  "name": "@passed-way/monorepo-backend",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "jest",
+    "test:e2e": "jest --apps/passed-way-monorepo-backend/testRegex .*\\.e2e\\-spec\\.ts$",
+    "start:jewelry:dev": "NODE_ENV=development nest start --watch jewelry",
+    "start:jewelry:prod": "NODE_ENV=production node dist/apps/jewelry/src/main",
+    "start:users:dev": "NODE_ENV=development nest start --watch users",
+    "start:users:prod": "NODE_ENV=production node dist/apps/users/src/main",
+    "start:files:dev": "NODE_ENV=development nest start --watch files",
+    "start:files:prod": "NODE_ENV=production node dist/apps/files/src/main"
+  },
+  "dependencies": {
+    "@golevelup/ts-jest": "^0.3.2",
+    "@nestjs/common": "^8.0.0",
+    "@nestjs/config": "^1.1.0",
+    "@nestjs/core": "^8.0.0",
+    "@nestjs/mongoose": "^9.0.1",
+    "@nestjs/platform-express": "^8.0.0",
+    "@nestjs/swagger": "^5.1.4",
+    "@sentry/node": "^6.15.0",
+    "bcrypt": "^5.0.1",
+    "bull": "^4.1.1",
+    "cache-manager": "^3.6.0",
+    "cache-manager-redis-store": "^2.0.0",
+    "class-transformer": "^0.4.0",
+    "class-validator": "^0.13.1",
+    "cypress": "^9.1.0",
+    "faker": "^5.5.3",
+    "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "minio": "^7.0.23",
+    "mongoose": "^6.0.13",
+    "ms": "^2.1.3",
+    "pino": "^7.2.0",
+    "pino-pretty": "^7.2.0",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
+    "rxjs": "^7.2.0",
+    "swagger-ui-express": "^4.1.6",
+    "underscore.string": "^3.3.5",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^8.0.0",
+    "@nestjs/schematics": "^8.0.0",
+    "@nestjs/testing": "^8.0.0",
+    "@types/bcrypt": "^5.0.0",
+    "@types/bull": "^3.15.6",
+    "@types/cache-manager-redis-store": "^2.0.0",
+    "@types/express": "^4.17.13",
+    "@types/faker": "^5.5.9",
+    "@types/jest": "^26.0.24",
+    "@types/jsonwebtoken": "^8.5.6",
+    "@types/lodash": "^4.14.177",
+    "@types/minio": "^7.0.11",
+    "@types/mockingoose": "^2.13.0",
+    "@types/ms": "^0.7.31",
+    "@types/node": "^16.0.0",
+    "@types/sinon-mongoose": "^1.3.11",
+    "@types/supertest": "^2.0.11",
+    "@types/underscore.string": "^0.0.38",
+    "@types/uuid": "^8.3.3",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "jest": "27.0.6",
+    "jest-extended": "^1.1.0",
+    "prettier": "^2.3.2",
+    "supertest": "^6.1.3",
+    "ts-jest": "^27.0.3",
+    "ts-loader": "^9.2.3",
+    "ts-node": "^10.0.0",
+    "tsconfig-paths": "^3.10.1",
+    "typescript": "^4.3.5"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "setupFilesAfterEnv": [
+      "jest-extended/all"
+    ],
+    "rootDir": ".",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/cypress/"
+    ],
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "./coverage",
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>/apps/",
+      "<rootDir>/libs/"
+    ],
+    "moduleNameMapper": {
+      "^@passed-way/error(|/.*)$": "<rootDir>/libs/error/src/$1",
+      "^@passed-way/tests(|/.*)$": "<rootDir>/libs/tests/src/$1",
+      "^@passed-way/logger(|/.*)$": "<rootDir>/libs/logger/src/$1",
+      "^@passed-way/app-bootstrapper(|/.*)$": "<rootDir>/libs/app-bootstrapper/src/$1",
+      "^@passed-way/health-checker(|/.*)$": "<rootDir>/libs/health-checker/src/$1",
+      "^@passed-way/auth-helper(|/.*)$": "<rootDir>/libs/auth-helper/src/$1"
+    }
+  }
+}
