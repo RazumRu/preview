@@ -1,0 +1,467 @@
+@use 'sass:math';
+
+#main_page {
+  #top-block {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+
+    .menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 110px;
+      right: 150px;
+
+      .logo {
+        width: 120px;
+        height: 80px;
+        background: url(/assets/img/logo.png) no-repeat center center/cover;
+      }
+
+      .elements {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        font-family: Montserrat, serif;
+        font-weight: bold;
+        font-size: var(--default-font-size);
+
+        .lang {
+          color: var(--secondary-gray-color);
+          cursor: pointer;
+          margin-right: 15px;
+
+          &:hover {
+            color: var(--primary-white-color);
+          }
+        }
+
+        a {
+          text-decoration: none;
+          color: inherit;
+          cursor: pointer;
+          display: block;
+
+          &.code {
+            background: var(--primary-white-color);
+            padding: 3px 10px;
+            color: var(--primary-black-color);
+            border-radius: 5px;
+
+            &:hover {
+              background: var(--secondary-white-color);
+              color: var(--primary-black-color);
+            }
+          }
+
+          &:hover {
+            color: var(--secondary-white-color);
+          }
+        }
+      }
+    }
+
+    .content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 120px;
+      flex: 1;
+
+      .info {
+        .title-1 {
+          font-family: Montserrat, serif;
+          font-size: 55px;
+          text-transform: uppercase;
+          white-space: nowrap;
+          font-weight: bold;
+          opacity: 0;
+          position: relative;
+          left: -50px;
+        }
+
+        .title-2 {
+          font-family: Montserrat, serif;
+          font-size: 50px;
+          text-transform: uppercase;
+          white-space: nowrap;
+          opacity: 0;
+          position: relative;
+          left: -50px;
+        }
+
+        .subtitle {
+          font-family: 'Montserrat Light', serif;
+          font-size: 25px;
+          opacity: 0;
+          position: relative;
+          left: -50px;
+        }
+
+        .explore {
+          color: var(--secondary-gray-color);
+          margin-top: 50px;
+          cursor: pointer;
+          font-family: 'Montserrat', serif;
+          font-size: 18px;
+          display: inline-block;
+          opacity: 0;
+
+          .fa-solid {
+            font-size: 22px;
+            vertical-align: middle;
+            margin-left: 7px;
+          }
+
+          &:hover {
+            color: var(--primary-white-color);
+          }
+        }
+
+        .social {
+          margin-top: 50px;
+          display: flex;
+          gap: 15px;
+          opacity: 0;
+
+          a {
+            text-decoration: none;
+            color: var(--secondary-white-color);
+            font-size: 35px;
+            display: block;
+
+            &:hover {
+              color: var(--primary-white-color);
+            }
+          }
+        }
+      }
+
+      .background {
+        width: 500px;
+        height: 430px;
+        background: url(/assets/img/main-page-background.png) no-repeat center
+          center/cover;
+        position: relative;
+
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          background: rgb(0, 0, 0);
+          background: linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(255, 255, 255, 0) 100%
+          );
+        }
+      }
+    }
+  }
+
+  #about {
+    position: relative;
+    height: 100vh;
+    min-height: 750px;
+    overflow: hidden;
+
+    $width: 100vw;
+    $borderw: math.div($width, 2);
+    $borderTop: 300px;
+
+    .triangle {
+      position: absolute;
+      z-index: 3;
+      width: 0;
+      border-top: solid $borderTop var(--primary-black-color);
+      border-right: solid $borderw transparent;
+      border-left: solid $borderw transparent;
+      top: 0px;
+      left: 50%;
+      margin-left: -$borderw;
+    }
+
+    .title-1 {
+      position: relative;
+      z-index: 4;
+      top: 50px;
+      font-size: 40px;
+      text-align: center;
+      font-weight: bold;
+      opacity: 0;
+      text-transform: uppercase;
+    }
+
+    .title-2 {
+      position: relative;
+      z-index: 4;
+      top: 55px;
+      font-size: 20px;
+      text-align: center;
+      opacity: 0;
+    }
+
+    .photo-1,
+    .photo-2 {
+      position: absolute;
+      width: 50%;
+      top: 0;
+      z-index: 1;
+      height: 500px;
+
+      &.photo-1 {
+        background: url(/assets/img/ring.jpg) no-repeat center center/cover;
+        left: 0;
+
+        &:before {
+          background: rgba(0, 0, 0, 0.7);
+        }
+      }
+
+      &.photo-2 {
+        background: url(/assets/img/bracelet.jpg) no-repeat center center/cover;
+        right: 0;
+      }
+
+      &:before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: rgba(0, 0, 0, 0.6);
+      }
+    }
+
+    .next-step {
+      position: absolute;
+      bottom: 0px;
+      top: 500px;
+      width: 100vw;
+      z-index: 3;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      font-family: 'Montserrat Light', serif;
+      font-size: 20px;
+      color: var(--secondary-white-color);
+
+      .text {
+        margin-top: 50px;
+        opacity: 0;
+        cursor: pointer;
+
+        .fa-regular {
+          font-size: 30px;
+          display: block;
+        }
+
+        &:hover {
+          color: var(--primary-white-color);
+        }
+      }
+
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -100px;
+        height: 100px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0) 0%,
+          black 100%
+        );
+      }
+    }
+
+    .gradient-line {
+      position: absolute;
+      top: 200px;
+      width: 500px;
+      height: 400px;
+      left: 50%;
+      margin-left: -250px;
+      z-index: 2;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        black 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    }
+
+    .text-1-block,
+    .text-2-block {
+      position: absolute;
+      z-index: 2;
+      top: 300px;
+      width: 400px;
+      opacity: 0;
+
+      &.text-1-block {
+        text-align: left;
+        left: 0px;
+      }
+
+      &.text-2-block {
+        text-align: right;
+        right: 0px;
+      }
+
+      .subtitle {
+        font-size: 20px;
+        color: var(--primary-white-color);
+        font-weight: bold;
+      }
+
+      .text {
+        font-family: 'Montserrat Light', serif;
+        font-size: 15px;
+        color: var(--secondary-white-color);
+      }
+    }
+  }
+
+  #collection {
+    overflow: hidden;
+    position: relative;
+
+    .title-1 {
+      margin-top: 50px;
+      font-size: 40px;
+      text-align: center;
+      font-weight: bold;
+      text-transform: uppercase;
+      opacity: 0;
+    }
+
+    .title-2 {
+      font-size: 22px;
+      text-align: center;
+      opacity: 0;
+    }
+
+    .list-block {
+      padding: 100px 50px 50px 50px;
+
+      .list-title-1 {
+        font-size: 19px;
+        width: 590px;
+        margin-left: -30px;
+        opacity: 0;
+      }
+
+      .list-title-2 {
+        font-size: 16px;
+        color: var(--secondary-white-color);
+        font-family: 'Montserrat Light', serif;
+        margin-top: 5px;
+        width: 590px;
+        margin-left: -30px;
+        opacity: 0;
+      }
+
+      .list-subtitle {
+        font-size: 30px;
+        margin-top: 50px;
+        font-weight: bold;
+        margin-left: -30px;
+        opacity: 0;
+      }
+
+      .list {
+        margin-top: 30px;
+        opacity: 0;
+
+        .elem-empty {
+          text-align: center;
+          margin-top: 100px;
+          color: var(--secondary-white-color);
+          font-family: 'Montserrat Light', serif;
+          font-size: 25px;
+
+          a {
+            text-decoration: none;
+            color: inherit;
+            margin-left: 10px;
+            cursor: pointer;
+            position: relative;
+            top: 2px;
+          }
+        }
+
+        .elem {
+          display: flex;
+          gap: 25px;
+          background: var(--secondary-black-color);
+          padding: 15px;
+
+          .photo {
+            flex: 0 0 250px;
+            height: 200px;
+          }
+
+          .info {
+            flex: 1;
+
+            .title {
+              font-size: 20px;
+            }
+
+            .description {
+              margin-top: 10px;
+              font-family: 'Montserrat Light', serif;
+            }
+
+            .proofs {
+              margin-top: 10px;
+              margin-left: 10px;
+              font-size: 15px;
+              font-family: 'Montserrat Light', serif;
+              color: var(--secondary-white-color);
+            }
+
+            .explore {
+              color: var(--primary-white-color);
+              margin-top: 20px;
+              cursor: pointer;
+              font-size: 14px;
+              display: inline-block;
+              padding: 3px 15px;
+              border: 2px solid var(--primary-white-color);
+              text-decoration: none;
+
+              .fa-solid {
+                font-size: 12px;
+                vertical-align: middle;
+                margin-left: 4px;
+                position: relative;
+                top: -1px;
+              }
+
+              &:hover {
+                color: var(--secondary-white-color);
+                border-color: var(--secondary-white-color);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

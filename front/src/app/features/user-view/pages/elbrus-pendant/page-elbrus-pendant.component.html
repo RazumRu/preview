@@ -1,0 +1,158 @@
+<div id="elbrus_pendant">
+  <div id="video_block">
+    <video
+      (loadeddata)="onLoadVideo()"
+      oncanplay="this.play()"
+      onloadedmetadata="this.muted = true"
+      loop
+      muted
+      autoplay
+      playsinline
+    >
+      <source
+        src="/assets/video/pendant-background.webm"
+        type='video/webm; codecs="vp8, vorbis"'
+      />
+      <source src="/assets/video/pendant-background.mp4" type="video/mp4" />
+    </video>
+
+    <ngx-ui-loader
+      pbColor="#4a4a4a"
+      fgsColor="#4a4a4a"
+      fgsType="ball-scale-multiple"
+      overlayColor="#1e1e1e"
+    ></ngx-ui-loader>
+
+    <div class="wrap">
+      <div class="logo-title">
+        {{ 'elbrus-pendant-page.logo-title' | translate }}
+      </div>
+
+      <div class="social">
+        <a [href]="videoUrl" target="_blank">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+
+        <a [href]="contacts.instagram" target="_blank">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+
+      <a href="/elbrus-pendant/code" class="code">{{
+        'elbrus-pendant-page.code' | translate
+      }}</a>
+
+      <a class="back" href="/"
+        ><i class="fa-solid fa-chevron-left"></i>
+        {{ 'elbrus-pendant-page.back' | translate }}
+      </a>
+
+      <div class="title-block">
+        <div class="prompt-title">
+          {{ 'elbrus-pendant-page.title' | translate }}
+        </div>
+        <div class="prompt-subtitle">
+          <div class="line"></div>
+          <span>{{ 'elbrus-pendant-page.subtitle' | translate }}</span>
+        </div>
+
+        <div class="prompt">
+          {{ 'elbrus-pendant-page.prompt-1' | translate }}
+          <span>{{ 'elbrus-pendant-page.prompt-2' | translate }}</span>
+        </div>
+      </div>
+
+      <div class="mount-info">
+        <div class="info-block">
+          <label>{{ 'elbrus-pendant-page.height-name' | translate }}</label>
+          <div class="value">
+            {{ 'elbrus-pendant-page.height-value' | translate }}
+          </div>
+        </div>
+
+        <div class="info-block">
+          <label>{{ 'elbrus-pendant-page.temp-name' | translate }}</label>
+          <div class="value">
+            {{ 'elbrus-pendant-page.temp-value' | translate }}
+          </div>
+        </div>
+
+        <div class="info-block">
+          <label>{{ 'elbrus-pendant-page.wind-name' | translate }}</label>
+          <div class="value">
+            {{ 'elbrus-pendant-page.wind-value' | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="box_block">
+    <div class="description">
+      <div
+        class="title"
+        [innerHTML]="'elbrus-pendant-page.box-block-title' | translate"
+      ></div>
+      <div class="subtitle">
+        {{ 'elbrus-pendant-page.box-block-subtitle' | translate }}
+      </div>
+      <div
+        class="prompt"
+        [innerHTML]="'elbrus-pendant-page.box-block-prompt-1' | translate"
+      ></div>
+      <div
+        class="prompt"
+        [innerHTML]="'elbrus-pendant-page.box-block-prompt-2' | translate"
+      ></div>
+
+      <div class="icons">
+        <div class="icon-box design">
+          <div class="icon"></div>
+          <label>{{
+            'elbrus-pendant-page.box-block-icon-1' | translate
+          }}</label>
+        </div>
+
+        <div class="icon-box unique">
+          <div class="icon far fa-qrcode"></div>
+          <label>{{
+            'elbrus-pendant-page.box-block-icon-2' | translate
+          }}</label>
+        </div>
+
+        <div class="icon-box mountain">
+          <div class="icon far fa-snowflake"></div>
+          <label>{{
+            'elbrus-pendant-page.box-block-icon-3' | translate
+          }}</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="box-image">
+      <img src="/assets/img/collection/elbrus-pendant/elbrus-pendant-box.png" />
+    </div>
+  </div>
+
+  <div id="payment_block">
+    <div class="payment-info">
+      <div class="left">
+        <div class="price">
+          {{ 'elbrus-pendant-page.payment-block-price' | translate }}
+        </div>
+        <div class="delivery-text">
+          {{ 'elbrus-pendant-page.payment-block-delivery-text' | translate }}
+        </div>
+        <div class="kit">
+          {{ 'elbrus-pendant-page.payment-block-kit' | translate }}
+        </div>
+      </div>
+
+      <div class="button-block">
+        <a class="button" [href]="contacts.instagram" target="_blank">{{
+          'elbrus-pendant-page.payment-block-button' | translate
+        }}</a>
+      </div>
+    </div>
+  </div>
+</div>

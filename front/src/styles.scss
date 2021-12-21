@@ -1,0 +1,43 @@
+@use 'themes' as *;
+
+@import '~@nebular/theme/styles/globals';
+@import '~@nebular/auth/styles/globals';
+@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/themes/dark.css';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
+
+@include nb-install() {
+  @include nb-theme-global();
+  @include nb-auth-global();
+}
+
+:root {
+  /* font */
+  --small-font-size: 13px;
+  --default-font-size: 16px;
+
+  /* color */
+  --primary-black-color: black;
+  --primary-2-black-color: #0e0e0e;
+  --secondary-black-color: #1e1e1e;
+  --primary-gray-color: #4a4a4a;
+  --secondary-gray-color: #adadad;
+  --primary-white-color: white;
+  --secondary-white-color: #c7c7c7;
+
+  /* content */
+  --min-content-width: 700px;
+}
+
+router-outlet {
+  display: none;
+}
+
+html * {
+  max-height: 999999px;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
+}

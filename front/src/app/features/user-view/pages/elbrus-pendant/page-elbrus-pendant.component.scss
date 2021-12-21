@@ -1,0 +1,282 @@
+#elbrus_pendant {
+  #video_block {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+
+    video {
+      object-fit: cover;
+      width: 100%;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-height: 600px;
+    }
+
+    > .wrap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+
+      .logo-title {
+        position: absolute;
+        top: 30px;
+        left: 50px;
+        font-family: Agency, serif;
+        text-align: center;
+        font-size: 60px;
+      }
+
+      .social {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        font-size: 50px;
+        left: 400px;
+        top: 33px;
+        gap: 25px;
+
+        a {
+          text-decoration: none;
+          color: inherit;
+
+          &:hover {
+            color: var(--secondary-white-color);
+          }
+        }
+      }
+
+      .code {
+        position: absolute;
+        top: 35px;
+        font-size: 17px;
+        text-decoration: none;
+        color: black;
+        border-radius: 5px;
+        padding: 8px 20px;
+        background-color: var(--primary-white-color);
+        right: 50px;
+        font-weight: bold;
+
+        &:hover {
+          background-color: var(--secondary-white-color);
+        }
+      }
+
+      .back {
+        position: absolute;
+        top: 43px;
+        font-size: 18px;
+        text-decoration: none;
+        right: 270px;
+        color: var(--primary-white-color);
+
+        i {
+          margin-right: 5px;
+          font-size: 16px;
+        }
+
+        &:hover {
+          color: var(--secondary-white-color);
+        }
+      }
+
+      .title-block {
+        margin-left: 50px;
+
+        .prompt-title {
+          font-size: 65px;
+          font-family: 'Montserrat Thin', serif;
+        }
+
+        .prompt-subtitle {
+          font-size: 21px;
+          font-family: 'Montserrat Thin', serif;
+          margin-top: 5px;
+          display: flex;
+          gap: 20px;
+          align-items: center;
+
+          .line {
+            background-color: white;
+            height: 1px;
+            width: 80px;
+            position: relative;
+            top: 1px;
+          }
+        }
+
+        .prompt {
+          margin-top: 100px;
+          font-size: 21px;
+          font-family: 'Montserrat Thin', serif;
+
+          span {
+            font-family: 'Montserrat', serif;
+            font-weight: bold;
+            display: block;
+          }
+        }
+      }
+
+      .mount-info {
+        display: flex;
+        gap: 50px;
+        position: absolute;
+        bottom: 50px;
+        left: 50px;
+
+        .info-block {
+          label {
+            color: var(--secondary-gray-color);
+            font-size: 18px;
+          }
+
+          .value {
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 3px;
+          }
+        }
+      }
+    }
+  }
+
+  #box_block {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 100px;
+    align-items: flex-start;
+
+    .description {
+      position: relative;
+      padding: 0 50px;
+
+      .title {
+        font-size: 30px;
+      }
+
+      .subtitle {
+        font-size: 21px;
+        margin-top: 30px;
+        font-family: 'Montserrat Thin', serif;
+        margin-bottom: 10px;
+      }
+
+      .prompt {
+        font-size: 17px;
+        font-family: 'Montserrat Thin', serif;
+        color: var(--secondary-white-color);
+        margin-top: 5px;
+      }
+
+      .icons {
+        display: flex;
+        gap: 30px;
+        margin-top: 50px;
+        justify-content: flex-start;
+
+        .icon-box {
+          font-family: 'Montserrat Thin', serif;
+          font-size: 15px;
+          text-align: center;
+          width: 190px;
+          color: var(--secondary-gray-color);
+
+          &.design .icon {
+            background: url('/assets/img/collection/elbrus-pendant/icon-1.png')
+              no-repeat center center;
+          }
+
+          .icon {
+            width: 150px;
+            height: 70px;
+            background-size: 150px auto !important;
+            margin: 0 auto;
+            font-size: 60px;
+          }
+
+          label {
+            display: block;
+          }
+        }
+      }
+    }
+
+    .box-image {
+      img {
+        display: block;
+        width: 470px;
+        position: relative;
+        top: -30px;
+        margin-right: 50px;
+      }
+    }
+  }
+
+  #payment_block {
+    padding: 70px 50px;
+    background: var(--primary-2-black-color);
+
+    .payment-info {
+      display: flex;
+      margin: 0 auto;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      left: -75px;
+
+      .left {
+        border-right: 1px solid var(--primary-white-color);
+        padding-right: 15px;
+        text-align: right;
+        flex: 0 0 400px;
+
+        .price {
+          font-weight: bold;
+          font-size: 40px;
+        }
+
+        .delivery-text {
+          color: var(--secondary-white-color);
+          font-size: 14px;
+        }
+
+        .kit {
+          margin-top: 15px;
+          font-size: 16px;
+        }
+      }
+
+      .button-block {
+        padding-left: 15px;
+        flex: 0 0 250px;
+
+        .button {
+          text-decoration: none;
+          display: block;
+          cursor: pointer;
+          color: var(--primary-black-color);
+          background: var(--primary-white-color);
+          font-size: 18px;
+          padding: 10px 30px;
+          text-align: center;
+
+          &:hover {
+            background: var(--secondary-white-color);
+          }
+        }
+      }
+    }
+  }
+}

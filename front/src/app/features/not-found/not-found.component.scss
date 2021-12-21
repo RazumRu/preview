@@ -1,0 +1,16 @@
+#not_found {
+  background: var(--primary-black-color);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .code {
+    color: var(--primary-white-color);
+    text-align: center;
+    font-weight: bold;
+    font-size: 60px;
+    font-family: Montserrat, serif;
+  }
+}

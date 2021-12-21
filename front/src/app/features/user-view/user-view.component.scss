@@ -1,0 +1,10 @@
+#content {
+  min-height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  font-family: Montserrat, sans-serif;
+  font-size: var(--default-font-size);
+  background: var(--primary-black-color);
+  color: var(--primary-white-color);
+}

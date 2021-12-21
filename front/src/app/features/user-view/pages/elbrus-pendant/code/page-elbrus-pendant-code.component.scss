@@ -1,0 +1,84 @@
+#elbrus_pendant_code {
+  margin: 50px;
+
+  .back {
+    color: var(--secondary-white-color);
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+
+    i {
+      margin-right: 10px;
+      font-size: 16px;
+    }
+
+    &:hover {
+      color: var(--primary-white-color);
+    }
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 50px;
+  }
+
+  .subtitle {
+    font-size: 19px;
+    font-family: 'Montserrat Light', serif;
+
+    &.a {
+      margin-top: 15px;
+    }
+  }
+
+  .code-block {
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    height: 300px;
+
+    .text {
+      flex: 1;
+
+      .code-title {
+        font-size: 25px;
+      }
+
+      .code-prompt {
+        margin-top: 7px;
+        font-family: 'Montserrat Light', serif;
+        font-size: 18px;
+      }
+    }
+
+    .video {
+      border: 3px dashed var(--secondary-black-color);
+      border-radius: 5px;
+      flex: 1;
+    }
+  }
+
+  .promo-block {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    height: 300px;
+
+    .text {
+      flex: 1;
+
+      .promo-title {
+        font-size: 25px;
+      }
+    }
+
+    .video {
+      border: 3px dashed var(--secondary-black-color);
+      border-radius: 5px;
+      flex: 1;
+    }
+  }
+}

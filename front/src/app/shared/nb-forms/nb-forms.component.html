@@ -1,0 +1,30 @@
+<form
+  (ngSubmit)="submitForm()"
+  #form="ngForm"
+  aria-labelledby="title"
+  class="nb-form"
+>
+  <ng-content selector=".title"></ng-content>
+  <ng-content selector=".subtitle"></ng-content>
+
+  <ng-content></ng-content>
+
+  <nb-alert *ngIf="errorMessage" status="danger">
+    {{ errorMessage }}
+  </nb-alert>
+
+  <nb-alert *ngIf="successMessage" status="success">
+    {{ successMessage }}
+  </nb-alert>
+
+  <button
+    nbButton
+    fullWidth
+    status="primary"
+    size="large"
+    [disabled]="submitted || !form.valid"
+    [class.btn-pulse]="submitted"
+  >
+    {{ buttonName }}
+  </button>
+</form>

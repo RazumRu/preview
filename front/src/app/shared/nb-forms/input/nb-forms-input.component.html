@@ -1,0 +1,43 @@
+<div class="form-control-group nb-form-input">
+  <label class="label" [for]="id">{{ title }}</label>
+
+  <nb-form-field
+    ><input
+      nbInput
+      fullWidth
+      [name]="name"
+      [(ngModel)]="value"
+      #val="ngModel"
+      [type]="type"
+      [id]="id"
+      [pattern]="_pattern"
+      [placeholder]="title"
+      fieldSize="large"
+      [status]="val.dirty ? (val.invalid ? 'danger' : 'basic') : 'basic'"
+      [required]="required"
+      [attr.aria-invalid]="val.invalid && val.touched ? true : null" />
+
+    <button
+      *ngIf="type === 'password' || showPassword"
+      nbSuffix
+      nbButton
+      ghost
+      (click)="toggleShowPassword()"
+    >
+      <nb-icon
+        [icon]="showPassword ? 'eye-outline' : 'eye-off-2-outline'"
+        pack="eva"
+        [attr.aria-label]="showPassword ? 'hide password' : 'show password'"
+      >
+      </nb-icon></button
+  ></nb-form-field>
+
+  <ng-container *ngIf="val.invalid && val.touched">
+    <div class="caption status-danger" *ngIf="val.errors?.required">
+      Field is required!
+    </div>
+    <div class="caption status-danger" *ngIf="val.errors?.pattern">
+      Invalid format!
+    </div>
+  </ng-container>
+</div>

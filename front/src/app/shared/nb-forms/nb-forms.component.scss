@@ -1,0 +1,40 @@
+.nb-form {
+  ::ng-deep {
+    > .title {
+      text-align: center;
+      font-size: 25px;
+      margin: 15px 0 0 0;
+      font-weight: bold;
+    }
+
+    > .subtitle {
+      text-align: center;
+      font-size: 16px;
+      margin: 5px 0 0 0;
+      color: var(--primary-gray-color);
+      font-weight: normal;
+    }
+
+    > button {
+      margin-top: 15px;
+    }
+
+    .form-control-group {
+      margin-top: 15px;
+
+      > .label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 15px;
+      }
+
+      > .caption {
+        margin-top: 5px;
+      }
+    }
+
+    nb-alert {
+      margin: 15px 0 0 0;
+    }
+  }
+}

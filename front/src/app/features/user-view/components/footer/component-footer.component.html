@@ -1,0 +1,33 @@
+<div id="footer">
+  <div class="social">
+    <a [href]="contacts.youtube" target="_blank">
+      <i class="fa-brands fa-youtube"></i>
+    </a>
+
+    <a [href]="contacts.instagram" target="_blank">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+
+    <a [href]="contacts.mail" target="_blank">
+      <i class="fa-solid fa-envelope"></i>
+    </a>
+  </div>
+
+  <div class="menu">
+    <!-- <span class="lang" (click)="changeLang()">
+      {{ lang | uppercase }}
+    </span>-->
+
+    <a *ngFor="let m of menu" [routerLink]="m.url">{{ m.title | translate }}</a>
+  </div>
+
+  <div class="menu-documents">
+    <a *ngFor="let m of menuDocuments" [routerLink]="m.url">{{
+      m.title | translate
+    }}</a>
+  </div>
+
+  <div class="copyright">
+    {{ 'copyright' | translate }}
+  </div>
+</div>

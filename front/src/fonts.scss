@@ -1,0 +1,87 @@
+@font-face {
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-style: normal;
+  src: url('assets/fonts/roboto/Roboto-Regular.eot');
+  src: url('assets/fonts/roboto/Roboto-Regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('assets/fonts/roboto/Roboto-Regular.woff') format('woff'),
+    url('assets/fonts/roboto/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Cubano';
+  font-weight: normal;
+  font-style: normal;
+  src: url(assets/fonts/cubano/Cubano.ttf);
+}
+
+@font-face {
+  font-family: 'Agency';
+  font-weight: normal;
+  font-style: normal;
+  src: url(assets/fonts/agency/agency.ttf);
+}
+
+@font-face {
+  font-family: 'Proxima';
+  font-weight: normal;
+  font-style: normal;
+  src: url(assets/fonts/proxima/ProximaNovaRegular.otf);
+}
+
+@font-face {
+  font-family: 'ProximaThin';
+  src: url(assets/fonts/proxima/ProximaNovaThin.otf) format('truetype');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'ProximaLight';
+  src: url(assets/fonts/proxima/ProximaNovaLight.otf) format('truetype');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'ProximaSemiBold';
+  src: url(assets/fonts/proxima/ProximaNovaSemiBold.otf) format('truetype');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: normal;
+  font-style: normal;
+  src: url(assets/fonts/montserrat/Montserrat-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: bold;
+  font-style: normal;
+  src: url(assets/fonts/montserrat/Montserrat-Bold.ttf);
+}
+
+@font-face {
+  font-family: 'Montserrat ExtraBold';
+  font-weight: bold;
+  font-style: normal;
+  src: url(assets/fonts/montserrat/Montserrat-ExtraBold.ttf);
+}
+
+@font-face {
+  font-family: 'Montserrat Light';
+  font-weight: bold;
+  font-style: normal;
+  src: url(assets/fonts/montserrat/Montserrat-Light.ttf);
+}
+
+@font-face {
+  font-family: 'Montserrat Thin';
+  font-weight: bold;
+  font-style: normal;
+  src: url(assets/fonts/montserrat/Montserrat-Thin.ttf);
+}
