@@ -1,0 +1,3 @@
+CREATE a
+CREATE b/c
+DELETE b/c

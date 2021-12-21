@@ -1,0 +1,43 @@
+{
+  "name": "@razumru/coding-challenge",
+  "version": "1.0.0",
+  "description": "In this challenge, i will implement commands that allow a user to create, move and delete directories.",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "ts-node src/index commands.txt",
+    "start:prod": "node dist/index commands.txt",
+    "build": "tsc",
+    "test": "jest",
+    "lint": "eslint \"src/**/*.ts\" --fix",
+    "prebuild": "rimraf dist"
+  },
+  "author": "Sergey Razumovskiy",
+  "license": "ISC",
+  "dependencies": {
+    "class-transformer": "^0.4.0",
+    "fs-extra": "^10.0.0",
+    "jest": "^27.0.6",
+    "jest-cli": "^27.0.6",
+    "jest-extended": "^1.1.0",
+    "rimraf": "^3.0.2",
+    "to-boolean": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^16.0.0",
+    "@types/to-boolean": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/eslint-plugin-tslint": "^4.29.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.2",
+    "ts-jest": "^27.0.3",
+    "ts-loader": "^9.2.3",
+    "ts-node": "^10.0.0",
+    "tslint": "^6.1.3",
+    "typescript": "^4.3.5"
+  }
+}
